@@ -5,10 +5,16 @@ function getRandomHexColor() {
 }
 
 function createBoxes(amount) {
+  if (inputNumberEl.value < +inputNumberEl.min || inputNumberEl.value > +inputNumberEl.max) {
+    console.log("🚀 ~ file: task-10.js:9 ~ createBoxes ~ inputNumberEl.value:", inputNumberEl.value)
+    alert(`The entered number is greater than the max or less than the min allowed number!`)
+    return;
+  }
+
   let size = 30;
   let boxesHTML = '' 
   
-  for (let i = 0; i < amount; i++) {
+  for (let i = 0; i < amount; i += +inputNumberEl.step) {
     let bgColor = getRandomHexColor();
     boxesHTML += `<div style = "height:${size}px; width:${size}px;  background-color:${bgColor};"></div>`;
     size += 10;
@@ -19,6 +25,7 @@ function createBoxes(amount) {
 
 function destroyBoxes() {
   boxesContainer.innerHTML = '';
+  inputNumberEl.value = null;
 }
 
 const controls = document.querySelector('#controls');

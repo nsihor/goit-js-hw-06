@@ -13,17 +13,10 @@ const images = [
   },
 ];
 
-const createListImages = ({images, width = 0}) => images.map(({url, alt}) => {
-  const liEl = document.createElement('li');
-
-  liEl.insertAdjacentHTML("beforeend", `<img src=${url} alt=${alt} width=${width}>`);
-
-  return liEl;
-})
-
 const ulGallery = document.querySelector('.gallery');
 
-const gallery = createListImages({images: images, width: 300});
+const listImages = images.map(({url, alt}) => {
+  return `<img src=${url} alt=${alt} width=300>`;
+})
 
-ulGallery.append(...gallery);
-
+ulGallery.insertAdjacentHTML("beforeend", listImages);

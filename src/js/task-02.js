@@ -7,20 +7,14 @@ const ingredients = [
   'Condiments',
 ];
 
-const createListItems  = ({liClass = '', pClass = '', items}) => items.map(item => {
+const createListItems  = ({liClass = '', items}) => items.map(item => {
   const liEl = document.createElement('li');
+
+  liEl.textContent = item;
   if (liClass !== '') {
     liEl.classList.add(liClass);
   }
-  
-  const pEl = document.createElement('p');
-  if (pClass !== '') {
-    liEl.classList.add(pClass);
-  }
-  pEl.textContent = item;
 
-  liEl.appendChild(pEl);
-  
   return liEl;
 });
 
